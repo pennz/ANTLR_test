@@ -11,6 +11,7 @@ public class EvalVisitor extends LabeledExprBaseVisitor<Integer> {
         String id = ctx.ID().getText(); // id is left-hand side of '='
         int value = visit(ctx.expr()); // compute value of expression on right 
         memory.put(id, value); // store it in our memory
+        System.out.printf("%s = %d\n", id, value); // print the result
         return value;
     }
 
