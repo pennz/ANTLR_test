@@ -10,7 +10,7 @@ public class ExtractInterfaceTool {
     InputStream is = System.in;
     if (inputFile != null) is = new FileInputStream(inputFile);
     ANTLRInputStream input = new ANTLRInputStream(is);
-    LabeledExprLexer lexer = new LabeledExprLexer(input);
+    JavaLexer lexer = new JavaLexer(input);
     CommonTokenStream tokens = new CommonTokenStream(lexer);
     JavaParser parser = new JavaParser(tokens);
     ParseTree tree = parser.compilationUnit();
@@ -19,8 +19,5 @@ public class ExtractInterfaceTool {
         new ParseTreeWalker(); // create standard walker ExtractInterfaceListener
     ExtractInterfaceListener extractor = new ExtractInterfaceListener(parser);
     walker.walk(extractor, tree); // initiate walk of tree with listener
-
-    EvalVisitor eval = new EvalVisitor();
-    eval.visit(tree);
   }
 }
