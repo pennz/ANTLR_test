@@ -30,4 +30,10 @@ public class ExtractInterfaceListener extends JavaBaseListener {
     String args = tokens.getText(ctx.formalParameters());
     System.out.println("\t" + type + " " + ctx.Identifier() + args + ";");
   }
+
+  /** Handle the imports * */
+  @Override
+  public void enterImportDeclaration(JavaParser.ImportDeclarationContext ctx) {
+    System.out.println("import " + ctx.getText());
+  }
 }
