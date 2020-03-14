@@ -10,8 +10,10 @@ stat:   expr NEWLINE
 expr:	expr ('*'|'/') expr
     |	expr ('+'|'-') expr
     |	INT
+    |   ID
     |	'(' expr ')'
     ;
+
 NEWLINE : '\r'? '\n' ;
 ID      : [a-zA-Z] ;
 INT     : [0-9]+ ;
