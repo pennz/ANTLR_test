@@ -15,6 +15,13 @@ public class EvalVisitor extends LabeledExprBaseVisitor<Integer> {
         return value;
     }
 
+    /** expr CLEAR */
+    @Override
+    public Integer visitClear(LabeledExprParser.ClearContext ctx) {
+        System.out.println("Before, memory size is "+ memory.size()+", Clear now"); // print the result
+        memory.clear();
+        return 0; // return dummy value
+    }
     /** expr NEWLINE */
     @Override
     public Integer visitPrintExpr(LabeledExprParser.PrintExprContext ctx) {
@@ -32,6 +39,7 @@ public class EvalVisitor extends LabeledExprBaseVisitor<Integer> {
     public Integer visitId(LabeledExprParser.IdContext ctx) {
         String id = ctx.ID().getText();
         if ( memory.containsKey(id) ) return memory.get(id);
+        System.err.printf("%s cannot be found.\n", id);
         return 0;
     }
     /** expr op=('*'|'/') expr */
