@@ -14,7 +14,7 @@ locals [int i=0]    // this goes to RowParser.row(), it returns RowContext
     : ( STUFF
         {
         $i++;
-        if ( $i == col ) System.out.println(%STUFF.text); // print last column?
+        if ( $i == col ) System.out.println($STUFF.text); // print last column?
         }
     )+
     ;
