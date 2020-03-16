@@ -1,6 +1,6 @@
 grammar Cymbol;
 
-file: (functionDecl | varDecl | comment)+ ;
+file: (functionDecl | varDecl) + ;
 varDecl
     : type ID ( '=' expr)? ';'
     ;
@@ -34,11 +34,16 @@ expr:   ID '(' exprList? ')'
     |   '(' expr ')'
     ;
 exprList:   expr (',' expr)* ;
-comment: '//' .*? NL;
+// comment: '//' .*? NL; // just ignore it in the lexer
 
 ID  :   ALP (ALP | DIGIT)* ;
+fragment
 ALP :   [a-zA-Z] ;
+fragment
 DIGIT:  [0-9] ;
+INT :   DIGIT+ ;
 
-NL  : '\r'? '\n' ;
-WS  : [ \t\n\r] -> skip ;
+// NL  : '\r'? '\n' ;
+WS  : [ \t\n\r]+ -> skip ;
+
+SL_COMMENT: '//' .*? '\n' -> skip ; // just ignore it in the lexer
