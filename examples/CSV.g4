@@ -1,10 +1,10 @@
 grammar CSV;
 
-file : row line* ; // maybe empty
-row  : line ;
-line : FIELD (',' FIELD)* '\r'? NL ;
+file : hdr row* ; // maybe empty
+hdr  : row ;
+row : FIELD (',' FIELD)* '\r'? NL ;
 
-FIELD 
+FIELD
     : TEXT
     | STRING
     |
