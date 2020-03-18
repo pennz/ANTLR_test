@@ -50,3 +50,21 @@ resolving: figuring out which definition the symbol refers to
 - VariableSymbol
 
 
+### Error REcovery Fail-Safe
+e.g. for Simple.g4, this input:
+```
+class T {
+  int int x;
+}
+```
+
+'int int'-(sync-and-return)->emit error
+detail:
+'int int' doesn't fit , resynchronization set for [prog, classDef, member], but for `classDef+` and `member+` loops,
+for `member` parser could loop back and find another member or exit the loop and find the '}'.
+for `classDef`, to see the start of another class or simply exit `prog`.
+so the resynchronization set now is {'int', '}', 'class'} // for member, exit prog and class.
+
+`int` is in the resynchronization set, so parser recovers without consuming a token.
+return to the caller: the `member+` loop. The parser detects another error when it retries to match
+another `member`.
