@@ -68,3 +68,5 @@ so the resynchronization set now is {'int', '}', 'class'} // for member, exit pr
 `int` is in the resynchronization set, so parser recovers without consuming a token.
 return to the caller: the `member+` loop. The parser detects another error when it retries to match
 another `member`.
+But it must consume one token now, and the resync set contains just `int`, so it goes to the 
+3rd test, these time, it got right.
