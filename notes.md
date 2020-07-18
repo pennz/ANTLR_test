@@ -143,3 +143,14 @@ return to the caller: the `member+` loop. The parser detects another error when 
 another `member`.
 But it must consume one token now, and the resync set contains just `int`, so it goes to the 
 3rd test, these time, it got right.
+[2;2~
+
+自然失业率 换工作，退休，新工作(自然的劳动力循环数量，）
+周期性失业 
+
+原因：经济波动 （借贷，花未来的钱，后面还债，这样的波动）
+
+工具-》 1.财政政策 2 货币政策 ->利率，刺激消费，厂商可以多雇佣人
+
+
+
